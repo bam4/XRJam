@@ -6,6 +6,8 @@ using Valve.VR;
 public class ThrowDodgeball : MonoBehaviour {
 
 	public GameObject Dodgeball;
+
+	GameObject spawnedDodgeball;
 	
 
 	public Valve.VR.InteractionSystem.Hand hand;
@@ -26,12 +28,18 @@ public class ThrowDodgeball : MonoBehaviour {
 
 	public void SpawnDodgeball () {
 		Debug.Log("Spawning dodgeball");
-		GameObject spawnedDodgeball = GameObject.Instantiate( Dodgeball, hand.transform.position, Quaternion.identity );
+		spawnedDodgeball = GameObject.Instantiate( Dodgeball, hand.transform.position, Quaternion.identity );
 		spawnedDodgeball.SetActive( true );
 		
-		hand.AttachObject( spawnedDodgeball, Valve.VR.InteractionSystem.GrabTypes.None, Valve.VR.InteractionSystem.Hand.AttachmentFlags.SnapOnAttach );
+		GrabDodgeball();
 
 	}
 
+	IEnumerator GrabDodgeball() {
+		yield return new WaitForSeconds(1);
+		hand.AttachObject( spawnedDodgeball, Valve.VR.InteractionSystem.GrabTypes.Trigger );
+		Debug.Log("Attached item" + hand.currentAttachedObject);
+		yield return null;
+	}
 	
 }

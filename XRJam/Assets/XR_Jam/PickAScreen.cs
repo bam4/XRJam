@@ -68,7 +68,7 @@ public class PickAScreen : MonoBehaviour {
             if (Physics.Raycast(rayCastStart.transform.position, rayCastStart.transform.forward, out hit, Mathf.Infinity, layerMask))
             {
                 Debug.DrawRay(rayCastStart.transform.position, rayCastStart.transform.forward * hit.distance, Color.green);
-                Debug.Log("Did Hit");
+                //Debug.Log("Did Hit");
                 endPosition = hit.point;
                 if (SteamVR_Actions._default.InteractUI.GetState(SteamVR_Input_Sources.Any) ) {
 
@@ -80,7 +80,7 @@ public class PickAScreen : MonoBehaviour {
                         }
                     } else {
                         if (hit.transform.gameObject.CompareTag("Suspect")) {
-                            Debug.Log("Hitting suspect.");
+                            //Debug.Log("Hitting suspect.");
                             hit.transform.gameObject.SendMessage("Interrogate");
 
                             
@@ -91,7 +91,7 @@ public class PickAScreen : MonoBehaviour {
             }
             else {
                 Debug.DrawRay(rayCastStart.transform.position, rayCastStart.transform.forward * 1000, Color.red);
-                Debug.Log("Did not Hit");
+                //Debug.Log("Did not Hit");
             }
 
 
