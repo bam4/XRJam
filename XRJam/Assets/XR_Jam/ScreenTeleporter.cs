@@ -7,7 +7,7 @@ using Valve.VR;
 public class ScreenTeleporter : MonoBehaviour {
 
 	public Transform teleportSpot;
-	public Transform playerMainSpot;
+	Transform playerMainSpot;
 
 	public delegate void TeleportAction();
     public static event TeleportAction GoToSecurity;

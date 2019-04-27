@@ -1789,7 +1789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportSpot: {fileID: 2131612878}
-  playerMainSpot: {fileID: 0}
 --- !u!1 &480156652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,7 +1977,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportSpot: {fileID: 1524718679}
-  playerMainSpot: {fileID: 0}
 --- !u!1 &623751647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,7 +2018,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportSpot: {fileID: 0}
-  playerMainSpot: {fileID: 0}
 --- !u!1 &750575899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,6 +2464,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &995420554
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4363675263044484, guid: 4c21dd0034dabfb44afedb6b1c7ed459, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 16.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363675263044484, guid: 4c21dd0034dabfb44afedb6b1c7ed459, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363675263044484, guid: 4c21dd0034dabfb44afedb6b1c7ed459, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363675263044484, guid: 4c21dd0034dabfb44afedb6b1c7ed459, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363675263044484, guid: 4c21dd0034dabfb44afedb6b1c7ed459, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363675263044484, guid: 4c21dd0034dabfb44afedb6b1c7ed459, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363675263044484, guid: 4c21dd0034dabfb44afedb6b1c7ed459, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363675263044484, guid: 4c21dd0034dabfb44afedb6b1c7ed459, type: 2}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c21dd0034dabfb44afedb6b1c7ed459, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1050876998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2794,7 +2833,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportSpot: {fileID: 309393455}
-  playerMainSpot: {fileID: 0}
 --- !u!1 &1227851286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,7 +2933,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportSpot: {fileID: 1204413088}
-  playerMainSpot: {fileID: 0}
 --- !u!1 &1276634146
 GameObject:
   m_ObjectHideFlags: 0
