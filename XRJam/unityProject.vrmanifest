@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.xrjam.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\NYU\\Spring_2019\\XRJam\\XRJam\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "XRJam [Testing]"
+        }
+      }
+    }
+  ]
+}
