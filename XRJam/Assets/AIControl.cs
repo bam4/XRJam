@@ -22,7 +22,7 @@ public class AIControl : MonoBehaviour {
 
 		anim.SetTrigger("isWalking");
 		anim.SetFloat("WOffset", Random.Range(0f,1f));
-		float sm = Random.Range(.5f,2f);
+		float sm = Random.Range(.5f,1f);
 		agent.speed *= sm;
 		anim.SetFloat("SpeedMult", sm);
 	}
