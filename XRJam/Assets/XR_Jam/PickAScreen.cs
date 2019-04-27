@@ -14,7 +14,7 @@ public class PickAScreen : MonoBehaviour {
     public float laserWidth = 0.1f;
     public float laserMaxLength = 5;
 
-    bool showLine = true;
+    bool securityTime = true;
 
      void OnEnable()
     {
@@ -36,20 +36,20 @@ public class PickAScreen : MonoBehaviour {
     }
 
     public void StartShowLine () {
-        showLine = true;
-        myLineRenderer.enabled = true;
+        securityTime = true;
+        //myLineRenderer.enabled = true;
     }
 
     public void EndShowLine () {
-        showLine = false;
-        myLineRenderer.enabled = false;
+        securityTime = false;
+        //myLineRenderer.enabled = false;
     }
 
 
 	// Update is called once per frame
 	void Update () {
 
-        if (showLine) {
+        
 
             Ray ray = new Ray(rayCastStart.transform.position, rayCastStart.transform.forward);
             
@@ -71,13 +71,25 @@ public class PickAScreen : MonoBehaviour {
                 Debug.Log("Did Hit");
                 endPosition = hit.point;
                 if (SteamVR_Actions._default.InteractUI.GetState(SteamVR_Input_Sources.Any) ) {
-                    if (hit.transform.gameObject.CompareTag("Screen")) {
-                        hit.transform.gameObject.SendMessage("Teleport");
+
+                    if (securityTime) {
+
+
+                        if (hit.transform.gameObject.CompareTag("Screen")) {
+                            hit.transform.gameObject.SendMessage("Teleport");
+                        }
+                    } else {
+                        if (hit.transform.gameObject.CompareTag("Suspect")) {
+                            Debug.Log("Hitting suspect.");
+                            hit.transform.gameObject.SendMessage("Interrogate");
+
+                            
+                        }
+
                     }
                 }
             }
-            else
-            {
+            else {
                 Debug.DrawRay(rayCastStart.transform.position, rayCastStart.transform.forward * 1000, Color.red);
                 Debug.Log("Did not Hit");
             }
@@ -85,6 +97,6 @@ public class PickAScreen : MonoBehaviour {
 
             myLineRenderer.SetPosition(0, rayCastStart.transform.position);
             myLineRenderer.SetPosition(1, endPosition);
-        }
+        
 	}
 }
