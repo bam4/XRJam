@@ -17,14 +17,14 @@ public class ScreenTeleporter : MonoBehaviour {
 	}
 
 	void Update () {
-		if (SteamVR_Actions._default.GrabGrip.GetState(SteamVR_Input_Sources.Any) ) {
-			player.transform.SetPositionAndRotation(playerMainSpot.transform.position, Quaternion.identity);
+		if (SteamVR_Actions._default.Teleport.GetState(SteamVR_Input_Sources.Any) ) {
+			player.transform.SetPositionAndRotation(playerMainSpot.transform.position, player.transform.rotation);
 		}
 	}
 
 
 	public void Teleport() {
-		player.transform.SetPositionAndRotation(teleportSpot.transform.position, Quaternion.identity);
+		player.transform.SetPositionAndRotation(teleportSpot.transform.position, player.transform.rotation);
 		StartCoroutine("BeginTeleport");
 	}
 
