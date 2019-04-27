@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
+
 
 public class ScreenTeleporter : MonoBehaviour {
 
@@ -12,6 +14,12 @@ public class ScreenTeleporter : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find("Player");
 		playerMainSpot = GameObject.Find("PlayerMainTransform").transform;
+	}
+
+	void Update () {
+		if (SteamVR_Actions._default.GrabGrip.GetState(SteamVR_Input_Sources.Any) ) {
+			player.transform.SetPositionAndRotation(playerMainSpot.transform.position, Quaternion.identity);
+		}
 	}
 
 
