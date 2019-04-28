@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public static GameManager gameManager;
 
@@ -22,12 +23,15 @@ public class GameManager : MonoBehaviour {
 
     public Text timerText;
     public Text scoreText;
-    
+
     void Awake()
     {
-        if (gameManager == null){
+        if (gameManager == null)
+        {
             gameManager = this;
-        } else {
+        }
+        else
+        {
             Destroy(this);
         }
     }
@@ -37,22 +41,26 @@ public class GameManager : MonoBehaviour {
     {
         gameStarted = false;
         suspects[0].GetComponent<InterrogateSuspect>().IsSecretAgent = true;
+        timerText.text = "5:00";
+        scoreText.text = "Score: 0";
     }
 
     public void StartGame(int numplayers)
     {
         gameStarted = true;
-        timer = 48f;
+        timerText.text = "5:00";
+        scoreText.text = "Score: 0";
+        timer = 180f;
         suspectCount = 0;
         score = 0;
         suspects[0].GetComponent<InterrogateSuspect>().IsSecretAgent = true;
-        if (numplayers == 2) {
-        suspects[0].GetComponent<CharacterController>().enabled = true;
-        suspects[0].GetComponent<FirstPersonController>().enabled = true;
-        suspects[0].GetComponentInChildren<Camera>().enabled = true;
+        if (numplayers == 2)
+        {
+           // suspects[0].GetComponent<CharacterController>().enabled = true;
+           // suspects[0].GetComponent<FirstPersonController>().enabled = true;
+           // suspects[0].GetComponentInChildren<Camera>().enabled = true;
         }
         photoScreen.sprite = photos[0];
-        //photoScreen.GetComponent<SpriteRenderer>().sprite = photos[0];
     }
 
     void Update()
@@ -60,12 +68,13 @@ public class GameManager : MonoBehaviour {
         if (gameStarted)
         {
             timer -= Time.deltaTime;
-            timerText.text = Mathf.Floor(timer / 60) + ":" + (timer % 60);
+            timerText.text = Mathf.Floor(timer / 60) + ":" + (int)(timer % 60);
             if (timer <= 0)
             {
                 timerText.text = "Game Over!";
             }
-        } else
+        }
+        else
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -79,33 +88,44 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void CorrectHit(GameObject suspect) {
-        score++;
-        timer += 2;
-        StartCoroutine(meshOffTemp(suspect));
-        scoreText.text = "Score: " + score;
-        suspects[suspectCount].GetComponent<InterrogateSuspect>().IsSecretAgent = false;
-        if (twoPlayer)
+    public void CorrectHit(GameObject suspect)
+    {
+        if (gameStarted)
         {
-            suspect.GetComponent<CharacterController>().enabled = false;
-            suspect.GetComponent<FirstPersonController>().enabled = false;
-            suspect.GetComponentInChildren<Camera>().enabled = false;
+            score++;
+            timer += 2;
+            StartCoroutine(meshOffTemp(suspect));
+            scoreText.text = "Score: " + score;
+            suspects[suspectCount].GetComponent<InterrogateSuspect>().IsSecretAgent = false;
+            if (twoPlayer)
+            {
+                // suspect.GetComponent<CharacterController>().enabled = false;
+                //suspect.GetComponent<FirstPersonController>().enabled = false;
+                //suspect.GetComponentInChildren<Camera>().enabled = false;
+            }
+            if (suspectCount < suspects.Count - 1)
+            {
+                suspectCount++;
+            }
+            else
+            {
+                suspectCount = 0;
+            }
+            suspects[suspectCount].GetComponent<InterrogateSuspect>().IsSecretAgent = true;
+            //suspects[suspectCount].GetComponent<CharacterController>().enabled = true;
+            //suspects[suspectCount].GetComponent<FirstPersonController>().enabled = true;
+            //suspects[suspectCount].GetComponentInChildren<Camera>().enabled = true;
+            //photoScreen.GetComponent<SpriteRenderer>().sprite = photos[suspectCount];
+            photoScreen.sprite = photos[suspectCount];
         }
-        if (suspectCount < suspects.Count - 1){
-            suspectCount++;
-        } else {
-            suspectCount = 0;
-        }
-        suspects[suspectCount].GetComponent<InterrogateSuspect>().IsSecretAgent = true;
-        suspects[suspectCount].GetComponent<CharacterController>().enabled = true;
-        suspects[suspectCount].GetComponent<FirstPersonController>().enabled = true;
-        suspects[suspectCount].GetComponentInChildren<Camera>().enabled = true;
-        //photoScreen.GetComponent<SpriteRenderer>().sprite = photos[suspectCount];
-        photoScreen.sprite = photos[suspectCount];
     }
 
-    public void IncorrectHit() {
-        timer -= 4;
+    public void IncorrectHit()
+    {
+        if (gameStarted)
+        {
+            timer -= 4;
+        }
     }
 
     IEnumerator meshOffTemp(GameObject suspect)
