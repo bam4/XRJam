@@ -9,6 +9,7 @@ TagManager:
   - projectile
   - FxTemporaire
   - Suspect
+  - GuardProjectile
   layers:
   - Default
   - TransparentFX

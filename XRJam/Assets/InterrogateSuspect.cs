@@ -10,6 +10,15 @@ public class InterrogateSuspect : MonoBehaviour {
 	public AudioSource myAudioSource;
 	public AudioClip Annoyed;
 
+
+	
+	void OnCollisionEnter(Collision collision) {
+		if (collision.gameObject.CompareTag("GuardProjectile")) {
+			Interrogate();
+		}
+
+	}
+
 	
 	public void Interrogate() {
 		if (IsSecretAgent) {
