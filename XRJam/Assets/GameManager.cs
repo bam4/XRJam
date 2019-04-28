@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager gameManager;
 
-    public GameObject photoScreen;
+    public Image photoScreen;
 
     public List<GameObject> suspects = new List<GameObject>();
     public List<Sprite> photos = new List<Sprite>();
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame(int numplayers)
     {
+        gameStarted = true;
         timer = 48f;
         suspectCount = 0;
         score = 0;
@@ -50,7 +51,8 @@ public class GameManager : MonoBehaviour {
         suspects[0].GetComponent<FirstPersonController>().enabled = true;
         suspects[0].GetComponentInChildren<Camera>().enabled = true;
         }
-        photoScreen.GetComponent<SpriteRenderer>().sprite = photos[0];
+        photoScreen.sprite = photos[0];
+        //photoScreen.GetComponent<SpriteRenderer>().sprite = photos[0];
     }
 
     void Update()
@@ -65,12 +67,12 @@ public class GameManager : MonoBehaviour {
             }
         } else
         {
-            if (Input.GetKeyDown(KeyCode.Keypad1))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 StartGame(1);
                 print(gameStarted);
             }
-            if (Input.GetKeyDown(KeyCode.Keypad2))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 StartGame(2);
             }
@@ -98,7 +100,8 @@ public class GameManager : MonoBehaviour {
         suspects[suspectCount].GetComponent<CharacterController>().enabled = true;
         suspects[suspectCount].GetComponent<FirstPersonController>().enabled = true;
         suspects[suspectCount].GetComponentInChildren<Camera>().enabled = true;
-        photoScreen.GetComponent<SpriteRenderer>().sprite = photos[suspectCount];
+        //photoScreen.GetComponent<SpriteRenderer>().sprite = photos[suspectCount];
+        photoScreen.sprite = photos[suspectCount];
     }
 
     public void IncorrectHit() {
