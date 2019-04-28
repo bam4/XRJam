@@ -38,7 +38,7 @@ public class ScreenTeleporter : MonoBehaviour {
 
 	IEnumerator BeginTeleport() 
 	{
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(20f);
 		player.transform.SetPositionAndRotation(playerMainSpot.transform.position, Quaternion.identity);
 		GoToSecurity();
         yield return null;
