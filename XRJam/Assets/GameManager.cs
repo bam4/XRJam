@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour {
         score = 0;
         suspects[0].GetComponent<InterrogateSuspect>().IsSecretAgent = true;
         if (numplayers == 2) {
-        suspects[0].GetComponent<CharacterController>().enabled = true;
-        suspects[0].GetComponent<FirstPersonController>().enabled = true;
-        suspects[0].GetComponentInChildren<Camera>().enabled = true;
+        // suspects[0].GetComponent<CharacterController>().enabled = true;
+        // suspects[0].GetComponent<FirstPersonController>().enabled = true;
+        //suspects[0].GetComponentInChildren<Camera>().enabled = true;
         }
         photoScreen.sprite = photos[0];
         //photoScreen.GetComponent<SpriteRenderer>().sprite = photos[0];
@@ -87,19 +87,19 @@ public class GameManager : MonoBehaviour {
         suspects[suspectCount].GetComponent<InterrogateSuspect>().IsSecretAgent = false;
         if (twoPlayer)
         {
-            suspect.GetComponent<CharacterController>().enabled = false;
-            suspect.GetComponent<FirstPersonController>().enabled = false;
-            suspect.GetComponentInChildren<Camera>().enabled = false;
+            // suspect.GetComponent<CharacterController>().enabled = false;
+            // suspect.GetComponent<FirstPersonController>().enabled = false;
+            // suspect.GetComponentInChildren<Camera>().enabled = false;
         }
         if (suspectCount < suspects.Count - 1){
             suspectCount++;
         } else {
             suspectCount = 0;
         }
-        suspects[suspectCount].GetComponent<InterrogateSuspect>().IsSecretAgent = true;
-        suspects[suspectCount].GetComponent<CharacterController>().enabled = true;
-        suspects[suspectCount].GetComponent<FirstPersonController>().enabled = true;
-        suspects[suspectCount].GetComponentInChildren<Camera>().enabled = true;
+        // suspects[suspectCount].GetComponent<InterrogateSuspect>().IsSecretAgent = true;
+        // suspects[suspectCount].GetComponent<CharacterController>().enabled = true;
+        // suspects[suspectCount].GetComponent<FirstPersonController>().enabled = true;
+        // suspects[suspectCount].GetComponentInChildren<Camera>().enabled = true;
         //photoScreen.GetComponent<SpriteRenderer>().sprite = photos[suspectCount];
         photoScreen.sprite = photos[suspectCount];
     }
